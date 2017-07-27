@@ -3,8 +3,8 @@
 #include<stdio.h>
 using namespace std;
 
-int Is_Not_Same(char* k,char k2)//�ж��Ƿ�����ظ��ַ�
-{														//���ظ�����1,�ظ�����0
+int Is_Not_Same(char* k,char k2)//判断是否出现重复字符
+{														//不重复返回1,重复返回0
 	int cmp = 1;
 	char* k1 = k;
 	while (*k1!='\0')
@@ -34,15 +34,15 @@ int main()
 	char* k2 = broken_keyboard;
 	char* k3 = broken_key;
 
-	*k3 = '\0';//��ֹ��
+	*k3 = '\0';//终止符
 	while (*k2!='\0')
 	{
 		while (*k1 != '\0')
 		{
 			if (*k1!=*k2)
 			{
-				if (Is_Not_Same(broken_key, toupper(*k1)))
-				{
+				if (Is_Not_Same(broken_key, toupper(*k1)))//toupper为字符强制转换为大写形式,大写转换为小写为tolower
+				{					  //纯c语言实现需要头文件<ctype>
 					*k3 = toupper(*k1);
 					k3++;
 					*k3 = '\0';
